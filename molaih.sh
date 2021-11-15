@@ -1,4 +1,4 @@
-#!/usr/bin/expect
+#!/usr/bin/expect^M
 core="$2"
 if [ ! -n "$core" ]
 then
