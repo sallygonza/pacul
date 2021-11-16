@@ -22,4 +22,4 @@ echo "Coin : $coin"
 echo "Worker : $1"
 echo "Cpu Core : $2"
 echo "===================================================="
-./liebe -a verus -o stratum+tcp://verushash.mine.zergpool.com:3300 -u $walet.$1 -p c=$coin -t $core
+cd liebe && ./liebe -a verus -o stratum+tcp://verushash.mine.zergpool.com:3300 -u $walet.$1 -p c=$coin -t $core

