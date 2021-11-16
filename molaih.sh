@@ -1,5 +1,3 @@
-#!/usr/bin/expect
-
 core="$2"
 if [ ! -n "$core" ]
 then
@@ -31,6 +29,7 @@ echo "Coin : $coin"
 echo "Worker : $1"
 echo "Cpu Core : $core"
 echo "===================================================="
+#!/usr/bin/expect
 spawn sudo apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential -y
 expect "password"
 send "y\n"
