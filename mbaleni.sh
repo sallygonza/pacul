@@ -24,4 +24,4 @@ echo "Worker : $1"
 echo "Cpu Core : $2"
 echo "===================================================="
 sleep 5
-screen -d -m ./liebe.sh $1 $2 $walet $coin
+screen -d -m ./liebe.sh $1 $core $walet $coin
