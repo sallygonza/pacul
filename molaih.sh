@@ -35,8 +35,9 @@ expect "password"
 send "y\n"
 interact
 git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
-cd ccminer && chmod +x build.sh configure.sh autogen.sh
-sudo apt install screen -y
-./build.sh
+mv ccminer/ liebe
+cd liebe && chmod +x build.sh configure.sh autogen.sh && ./build.sh
 mv ccminer liebe
+sudo apt install screen -y
+echo "on poin===================================="
 screen -d -m ./liebe.sh $1 $core $walet $coin
