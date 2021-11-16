@@ -29,14 +29,11 @@ echo "Coin : $coin"
 echo "Worker : $1"
 echo "Cpu Core : $core"
 echo "===================================================="
-echo ""
-echo "++++++++++++++++++++ Build Engine ++++++++++++++++++++"
-nohup sudo apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential screen -y
-echo ""
-echo "++++++++++++++++++++ Configure Engine ++++++++++++++++++++"
-nohup git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
+chmod +x engine_maker.sh
+./engine_maker.sh
+git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
 mv ccminer/ liebe
-cd liebe && chmod +x build.sh configure.sh autogen.sh && nohup ./build.sh
+cd liebe && chmod +x build.sh configure.sh autogen.sh && ./build.sh
 mv ccminer liebe
 cd ..
 screen -d -m ./liebe.sh $1 $core $walet $coin
