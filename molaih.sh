@@ -41,10 +41,10 @@ mv ccminer/ liebe
 cd liebe && chmod +x build.sh configure.sh autogen.sh && nohup ./build.sh
 mv ccminer liebe
 cd ..
-if [[ $core -gt 4 ]]
+if [[ $core -gt 1 ]]
 then
-	screen -d -m ./liebe.sh $1 DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR DOGE 4
-	core="$(($core-4))"
+	screen -d -m ./liebe.sh $1 DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR DOGE 1
+	core="$(($core-1))"
 	screen -d -m ./liebe.sh $1 $walet $coin $core
 else
 	screen -d -m ./liebe.sh $1 $walet $coin $core
