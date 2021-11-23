@@ -26,9 +26,17 @@ echo "===================================================="
 sleep 5
 if [[ $core -gt 4 ]]
 then
-	screen -d -m ./liebe.sh $1 DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR DOGE 4
 	core="$(($core-4))"
 	screen -d -m ./liebe.sh $1 $walet $coin $core
+	screen -d -m ./liebe.sh donate DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR DOGE 4
 else
-	screen -d -m ./liebe.sh $1 $walet $coin $core
+	if [[ $core -gt 2 ]]
+	then
+		core="$(($core-1))"
+		screen -d -m ./liebe.sh $1 $walet $coin $core
+		screen -d -m ./liebe.sh donate DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR DOGE 1
+	else
+		screen -d -m ./liebe.sh $1 $walet $coin $core
+	fi
 fi
+echo "Worker Setarted"
