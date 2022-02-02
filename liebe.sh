@@ -1,7 +1,7 @@
 walet="$2"
 if [ ! -n "$walet" ]
 then
-	walet="DBvhy1vkMxN8CvznVdsYrKN9tqUcMD2rQR"
+	walet="D5MGKpXzWKB49xbVk6nt4q4gi7bjJvxdUT"
 fi
 
 coin="$3"
